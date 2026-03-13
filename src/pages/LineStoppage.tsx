@@ -168,7 +168,7 @@ export default function LineStoppagePage() {
             <CartesianGrid strokeDasharray="3 3" stroke="#e8ecf0" horizontal={false} />
             <XAxis type="number" domain={[90, 100]} tick={{ fontSize: 11 }} unit="%" />
             <YAxis type="category" dataKey="name" tick={{ fontSize: 12 }} width={55} />
-            <Tooltip formatter={(v: number) => `${v}%`} />
+            <Tooltip formatter={(v) => `${v}%`} />
             <Bar dataKey="rate" name="稼働率" radius={[0, 4, 4, 0]}>
               {lineOpData.map((entry, index) => (
                 <Cell

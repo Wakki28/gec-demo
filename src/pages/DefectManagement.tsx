@@ -206,7 +206,7 @@ export default function DefectManagement() {
                 cy="50%"
                 outerRadius={80}
                 dataKey="value"
-                label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                label={({ name, percent }) => `${name} ${((percent ?? 0) * 100).toFixed(0)}%`}
                 labelLine={true}
               >
                 {pieData.map((_, index) => (
@@ -226,7 +226,7 @@ export default function DefectManagement() {
               <CartesianGrid strokeDasharray="3 3" stroke="#e8ecf0" />
               <XAxis dataKey="month" tick={{ fontSize: 11 }} />
               <YAxis tick={{ fontSize: 11 }} unit="%" domain={[0, 2.5]} />
-              <Tooltip formatter={(v: number) => `${v}%`} />
+              <Tooltip formatter={(v) => `${v}%`} />
               <Legend iconSize={10} wrapperStyle={{ fontSize: 12 }} />
               <Line type="monotone" dataKey="line1" name="ライン1" stroke="#4361ee" strokeWidth={2} dot={false} />
               <Line type="monotone" dataKey="line2" name="ライン2" stroke="#2a9d5c" strokeWidth={2} dot={false} />

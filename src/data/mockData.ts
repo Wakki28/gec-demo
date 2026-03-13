@@ -1,4 +1,4 @@
-import type { ProductionRecord, DefectRecord, LineStoppage, OrderData, Line, User } from "../types";
+import type { ProductionRecord, DefectRecord, LineStoppage, OrderData, Line, User, AuthUser, WorkerMaster, LineMaster, ClientMaster } from "../types";
 
 // ライン一覧
 export const lines: Line[] = [
@@ -117,4 +117,90 @@ export const monthlyDefectRateData = [
   { month: "2025-12", line1: 0.7, line2: 1.0, line3: 0.7, line4: 1.1 },
   { month: "2026-01", line1: 0.9, line2: 0.8, line3: 1.3, line4: 0.8 },
   { month: "2026-02", line1: 0.7, line2: 1.0, line3: 0.7, line4: 1.0 },
+];
+
+// ログインユーザー一覧
+export const mockUsers: AuthUser[] = [
+  {
+    id: 'u001',
+    name: '田中 誠',
+    employeeNumber: 'EMP001',
+    role: 'admin',
+    department: '企画管理室 情報システムチーム',
+  },
+  {
+    id: 'u002',
+    name: '鈴木 健太',
+    employeeNumber: 'EMP002',
+    role: 'general',
+    department: '製造部 ライン1',
+  },
+  {
+    id: 'u003',
+    name: '山本 直樹',
+    employeeNumber: 'EMP003',
+    role: 'general',
+    department: '製造部 ライン2',
+  },
+];
+
+// 作業者マスタ
+export const mockWorkerMasters: WorkerMaster[] = [
+  { id: 'w001', name: '田中 誠',   employeeNumber: 'EMP001', department: '企画管理室', isActive: true },
+  { id: 'w002', name: '鈴木 健太', employeeNumber: 'EMP002', department: '製造部',     isActive: true },
+  { id: 'w003', name: '山本 直樹', employeeNumber: 'EMP003', department: '製造部',     isActive: true },
+  { id: 'w004', name: '中村 亮',   employeeNumber: 'EMP004', department: '製造部',     isActive: true },
+  { id: 'w005', name: '佐藤 美咲', employeeNumber: 'EMP005', department: '品質管理部', isActive: true },
+  { id: 'w006', name: '伊藤 拓也', employeeNumber: 'EMP006', department: '製造部',     isActive: false },
+];
+
+// ラインマスタ
+export const mockLineMasters: LineMaster[] = [
+  { id: 'l001', name: 'ライン1', capacity: 500, isActive: true },
+  { id: 'l002', name: 'ライン2', capacity: 450, isActive: true },
+  { id: 'l003', name: 'ライン3', capacity: 500, isActive: true },
+  { id: 'l004', name: 'ライン4', capacity: 400, isActive: false },
+];
+
+// 取引先マスタ（受発注変換フォーマット付き）
+export const mockClientMasters: ClientMaster[] = [
+  {
+    id: 'c001',
+    name: 'ノーリツ株式会社',
+    formatType: 'CSV形式A',
+    isActive: true,
+    columnMapping: {
+      orderNumber: '注文番号',
+      productCode: '品番',
+      quantity: '数量',
+      deliveryDate: '納期',
+      clientCode: '得意先コード',
+    },
+  },
+  {
+    id: 'c002',
+    name: '株式会社ABC商事',
+    formatType: 'CSV形式B',
+    isActive: true,
+    columnMapping: {
+      orderNumber: 'ORDER_NO',
+      productCode: 'ITEM_CODE',
+      quantity: 'QTY',
+      deliveryDate: 'DELIVERY',
+      clientCode: 'CLIENT_CD',
+    },
+  },
+  {
+    id: 'c003',
+    name: '山田製作所',
+    formatType: 'CSV形式C',
+    isActive: true,
+    columnMapping: {
+      orderNumber: '受注No',
+      productCode: '製品コード',
+      quantity: '発注数',
+      deliveryDate: '希望納期',
+      clientCode: '顧客番号',
+    },
+  },
 ];

@@ -56,3 +56,50 @@ export type OrderData = {
   itemCount: number;
   fileName: string;
 };
+
+// 権限ロール
+export type Role = 'admin' | 'general';
+
+// ログインユーザー
+export type AuthUser = {
+  id: string;
+  name: string;
+  employeeNumber: string;
+  role: Role;
+  department: string;
+};
+
+// 作業者マスタ
+export type WorkerMaster = {
+  id: string;
+  name: string;
+  employeeNumber: string;
+  department: string;
+  isActive: boolean;
+};
+
+// ラインマスタ
+export type LineMaster = {
+  id: string;
+  name: string;
+  capacity: number;
+  isActive: boolean;
+};
+
+// 受発注変換フォーマット設定
+export type ColumnMapping = {
+  orderNumber: string;   // 注文番号の列名
+  productCode: string;   // 品番の列名
+  quantity: string;      // 数量の列名
+  deliveryDate: string;  // 納期の列名
+  clientCode: string;    // 取引先コードの列名
+};
+
+// 取引先マスタ
+export type ClientMaster = {
+  id: string;
+  name: string;
+  formatType: string;
+  columnMapping: ColumnMapping;
+  isActive: boolean;
+};
